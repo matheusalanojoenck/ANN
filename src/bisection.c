@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 void bisection(double (*f)(double), double a, double b, int n)
 {
@@ -36,12 +37,42 @@ double f(double x)
     return x*x*x - 2.0;
 }
 
+double f2(double x)
+{
+    return x*x - 7;
+}
+
+double f3(double x)
+{
+    return sqrt(x) - cos(x);
+}
+
+double f4(double x)
+{
+    return 2*(x + 1) * (x - 0.5) * (x - 1);
+}
+
+double f5(double x)
+{
+    return x*x*x - 7*(x*x) + 14*x - 7;
+}
+
+double f6(double x)
+{
+    return pow(x, 4) - 2*pow(x, 3) - 3*(x*x) + 3*x + 2;
+}
+
+double f7(double x)
+{
+    return x - pow(2, -x);
+}
+
 int main(int argc, char const *argv[])
 {
     int max_iter = 10;
-    double a = 0.8027595328839907; 
-    double b = 2.4493542821107273;
+    double a = -0.0695; 
+    double b = 1.48019;
 
-    bisection(f, a, b, max_iter);
+    bisection(f7, a, b, max_iter);
     return 0;
 }
