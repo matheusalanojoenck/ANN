@@ -1,24 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-
-void newton (double (*f)(double), double (*df)(double), double x0, double n)
-{
-    double xn;
-    for (int i = 0; i < n; i++)
-    {
-        xn = x0 - f(x0) / df(x0);
-        x0 = xn;
-        printf("x%d = %.16f\n" , i + 1, xn);
-    }
-}
+#include "ann.c"
 
 double f(double x)
+{
+    return x*x*x - 2.0;
+}
+
+double f1(double x)
 {
     return x*x - 7;
 }
 
-double df(double x)
+double df1(double x)
 {
     return 2 * x;
 }
@@ -73,12 +67,18 @@ double df6(double x)
     return (pow(2, x) + log(2))/pow(2, x);
 }
 
+double f7(double x)
+{
+    return x - pow(2, -x);
+}
+
 int main(int argc, char const *argv[])
 {
-    int max_iter = 4;
-    double x0 = 0.18743;
+    int max_iter = 10;
+    double a = -0.0695; 
+    double b = 1.48019;
 
-    newton(f6, df6, x0, max_iter);
+    bisection(f7, a, b, max_iter);
 
     return 0;
 }
