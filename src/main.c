@@ -74,11 +74,11 @@ double f7(double x)
 
 int main(int argc, char const *argv[])
 {
-    int max_iter = 10;
-    double a = -0.0695; 
-    double b = 1.48019;
+    int max_iter = 15;
+    double a = -0.14059; 
+    double b = 1.21482;
 
-    bisection(f7, a, b, max_iter);
+    secant(f6, a, b, max_iter);
 
     return 0;
 }
