@@ -18,17 +18,17 @@ void secant(double (*f)(double), double x0, double x1, int n)
         x1 = x2;
         printf("x%d = %.16f\n", i + 1, x2);
     }
-    
 }
+
+double f (double x)
+    {
+        return x*x*x - 2;
+    }
 
 int main(int argc, char const *argv[])
 {
     double x0 = 1, x1 = 0;
     int max_iter = 50;
-    double f (double x)
-    {
-        return x*x*x - 2;
-    }
 
     secant(f, x0, x1, max_iter);
 
