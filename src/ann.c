@@ -57,7 +57,7 @@ void secant(double (*f)(double), double x0, double x1, int n)
         x2 = (x0 * fx1 - x1 * fx0) / (fx1 - fx0);
         x0 = x1;
         x1 = x2;
-        printf("x%d = %.16f\n", i + 1, x2);
+        printf("x%d = %.16f\n", i + 2, x2);
     }
 }
 
