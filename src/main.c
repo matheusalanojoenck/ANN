@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ann.c"
+#include <math.h>
 
 double f(double x)
 {
@@ -84,12 +85,24 @@ double f9(double x)
 
 double f10(double x)
 {
-    return x * x - 4 * x + 2 + log(x);
+    return x * x - 4 * x + 2 - log(x);
+}
+
+double f11(double m)
+{
+    double v, g, c, t, e;
+    e = exp(1);
+    g = 9.81;
+    c = 18.32;
+    v = 34.88;
+    t = 7.22;
+
+    return ((9.81 * m) / 18.32) * (1 - exp(-(18.32/m)/7.22)) - 34.88;
 }
 
 int main(int argc, char const *argv[])
 {
-    int max_iter = 5;
+    int max_iter = 4;
     double a = 1.16754; 
     double b = 4.42187;
 
