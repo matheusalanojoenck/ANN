@@ -69,16 +69,31 @@ double df6(double x)
 
 double f7(double x)
 {
-    return x - pow(2, -x);
+    return exp(x) - 2 * (x * x) + x - 1.5;
+}
+
+double f8(double x)
+{
+    return x * cos(x) - 3 * (x * x) + 4 * x - 1;
+}
+
+double f9(double x)
+{
+    return M_PI * x - exp(x);
+}
+
+double f10(double x)
+{
+    return x * x - 4 * x + 2 + log(x);
 }
 
 int main(int argc, char const *argv[])
 {
-    int max_iter = 15;
-    double a = -0.14059; 
-    double b = 1.21482;
+    int max_iter = 5;
+    double a = 1.16754; 
+    double b = 4.42187;
 
-    secant(f6, a, b, max_iter);
+    secant(f10, a, b, max_iter);
 
     return 0;
 }

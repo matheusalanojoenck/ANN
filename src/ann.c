@@ -1,7 +1,6 @@
 #include "ann.h"
 #include <math.h>
 
-
 void bisection(double (*f)(double), double a, double b, int n)
 {
     if (f(a) * f(b) < 0)
@@ -32,14 +31,14 @@ void bisection(double (*f)(double), double a, double b, int n)
     }
 }
 
-void newton (double (*f)(double), double (*df)(double), double x0, double n)
+void newton(double (*f)(double), double (*df)(double), double x0, double n)
 {
     double xn;
     for (int i = 0; i < n; i++)
     {
         xn = x0 - f(x0) / df(x0);
         x0 = xn;
-        printf("x%d = %.16f\n" , i + 1, xn);
+        printf("x%d = %.16f\n", i + 1, xn);
     }
 }
 
@@ -62,3 +61,34 @@ void secant(double (*f)(double), double x0, double x1, int n)
     }
 }
 
+void false_position(double (*f)(double), double a, double b, int n)
+{
+    if (f(a) * f(b) < 0)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            double fa = f(a);
+            double fb = f(b);
+            double c;
+            c = (a * fb - b * fa) / (fb - fa);
+            if (f(c) == 0)
+            {
+                printf("Raiz de f encontrada =>  %f.16", c);
+                return;
+            }
+            printf("x%d = %f.16f\n", i + 1, c);
+            if (fa * fb < 0)
+            {
+                b = c;
+            }
+            else
+            {
+                a = c;
+            }
+        }
+    }
+    else
+    {
+        printf("O intervalo [%f.16, %f.16] nao serve.", a, b);
+    }
+}
