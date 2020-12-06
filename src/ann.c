@@ -73,11 +73,11 @@ void false_position(double (*f)(double), double a, double b, int n)
             c = (a * fb - b * fa) / (fb - fa);
             if (f(c) == 0)
             {
-                printf("Raiz de f encontrada =>  %f.16", c);
+                printf("Raiz de f encontrada =>  %.16f", c);
                 return;
             }
-            printf("x%d = %f.16f\n", i + 1, c);
-            if (fa * fb < 0)
+            printf("x%d = %.16f\n", i + 1, c);
+            if (fa * f(c) < 0)
             {
                 b = c;
             }
@@ -89,7 +89,7 @@ void false_position(double (*f)(double), double a, double b, int n)
     }
     else
     {
-        printf("O intervalo [%f.16, %f.16] nao serve.", a, b);
+        printf("O intervalo [%.16f, %.16f] nao serve.", a, b);
     }
 }
 
