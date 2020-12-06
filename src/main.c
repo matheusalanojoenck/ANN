@@ -73,9 +73,19 @@ double f7(double x)
     return exp(x) - 2 * (x * x) + x - 1.5;
 }
 
+double df7(double x)
+{
+    return exp(x) - 4 * x + 1;
+}
+
 double f8(double x)
 {
     return x * cos(x) - 3 * (x * x) + 4 * x - 1;
+}
+
+double df8(double x)
+{
+    return cos(x) - x * sin(x) - 6 * x + 4;
 }
 
 double f9(double x)
@@ -83,9 +93,19 @@ double f9(double x)
     return M_PI * x - exp(x);
 }
 
+double df9(double x)
+{
+    return M_PI - exp(x);
+}
+
 double f10(double x)
 {
     return x * x - 4 * x + 2 - log(x);
+}
+
+double df10(double x)
+{
+    return 2 * x - 4 - (1 / x);
 }
 
 double f11(double m)
@@ -102,11 +122,11 @@ double f11(double m)
 
 int main(int argc, char const *argv[])
 {
-    int max_iter = 4;
-    double a = 1.16754; 
-    double b = 4.42187;
-
-    secant(f10, a, b, max_iter);
+    int max_iter = 10;
+    double a = 0.1671; 
+    double b = 1.71137;
+    
+    false_position(f10, a, b, max_iter);
 
     return 0;
 }
