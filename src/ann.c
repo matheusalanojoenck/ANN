@@ -93,7 +93,7 @@ void false_position(double (*f)(double), double a, double b, int n)
     }
 }
 
-void jacobi(double *guess, int rows, double matrix[rows][rows + 1], int n)
+void jacobi(double *chute, int rows, double matrix[rows][rows + 1], int n)
 {
     double temp_arr[rows];
     for (int i = 0; i < n; i++)
@@ -101,21 +101,22 @@ void jacobi(double *guess, int rows, double matrix[rows][rows + 1], int n)
         for (int r = 0; r < rows; r++)
         {
             double temp = 0;
-             temp += matrix[r][rows];
+            temp += matrix[r][rows];
             for (int c = 0; c < rows; c++)
             {
                 if (r != c)
                 {
-                    temp -= guess[c] * matrix[r][c];
+                    temp -= chute[c] * matrix[r][c];
                 }
-                temp /= matrix[r][r];
-                printf("x%d, %d = %f.16\n", r + 1, i + 1, temp);
             }
+            temp /= matrix[r][r];
+            printf("x%d, %d = %.16f\n", r + 1, i + 1, temp);
             temp_arr[r] = temp;
         }
+        printf("\n");
         for (int k = 0; k < rows; k++)
         {
-            guess[k] = temp_arr[k];
+            chute[k] = temp_arr[k];
         }
     }
 }
