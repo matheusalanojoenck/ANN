@@ -108,15 +108,105 @@ double df10(double x)
     return 2 * x - 4 - (1 / x);
 }
 
-double f11(double m)
+double f11(double x)
 {
-    //double g = 9.81;
-    //double c = 18.32;
-    //double v = 34.88;
-    //double t = 7.22;
-    //double e = exp(1);
+    double g = 9.81;
+    double c = 18.32;
+    double v = 34.88;
+    double t = 7.22;
+    double m = x;
 
-    return 9.81 * m / 18.32 * (1 - pow(exp(1), (-(18.32/m)/7.22))) - 34.88;
+    return (g * m / c) * (1 - exp(-(c/m) * t)) - v;
+}
+
+double f12(double x)
+{
+    double g = 9.81;
+    double c = x;
+    double v = 32.85;
+    double t = 9.91;
+    double m = 73.81;
+
+    return (g * m / c) * (1 - exp(-(c/m) * t)) - v;
+}
+
+double f13(double x)
+{
+    double g = 9.81;
+    double H = x;
+    double v = 9.6;
+    double t = 4.71;
+    double L = 3.73;
+
+    return (sqrt(2*g*H) * tanh((sqrt(2*g*H) / (2 * L)) * t)) - v;
+}
+
+double f14(double x)
+{
+    double g = 9.81;
+    double Q = 56.33;
+    double y = x;
+    double A = 2.38 * y + (pow(y, 2) / 2);
+    double B = 2.38 + y;
+    return 1 - (pow(Q, 2) / (g * pow(A, 3))) * B;
+}
+
+double f15(double x)
+{
+    double V = 2090.81;
+    double h = x;
+    double R = 8.74;
+
+    return M_PI * pow(h,2) * ((3 * R - h) / 3) - V;
+}
+
+double f16(double x)
+{
+    double h = x;
+    double r = 9.75;
+    double vs = ( 4 * M_PI* pow(r, 3)) / 3; //volume total da esfera
+    double V = -((320,39*vs/1000)-vs);
+    //double V = vs / 1000000 / 67961;
+    //V = 2638.53109668631;
+    
+    return ((M_PI * pow(h, 2)) / 3) * (3 * r - h) - V;
+}
+
+double f18(double x)
+{
+    double P0 = 1520593;
+    double v = 193404;
+    double P = 3057739;
+    double lambda = x;
+    double t = 365;
+
+    return P0 * exp(lambda) + (v / lambda) * (exp(lambda) - 1) - P;
+}
+
+double f19(double x)
+{
+    double L = 4.57; 
+    double r = 4.32;
+    double V = 52.73;
+    double h = x;
+
+    return (L * (0.5 * M_PI * pow(r, 2) - pow(r, 2) * asin(h/r) - h * sqrt(pow(r, 2) - pow(h, 2))) - V);
+}
+
+double f20(double x)
+{
+    double g = 9.81;
+    double t = 1;
+    double w = x;
+    return -(g/(2 * pow(w, 2))) * (sinh(w * t) - sin(w * t)) - 2.73;
+}
+
+double f21(double x)
+{
+    double l = x;
+    //(17.14 - 2*l) * (9.01 - 2*l) * l
+    //(772157/5000) - (523/5)*l + 12*pow(l,2)
+    return (772157/5000) - (523/5)*l + 12*pow(l,2); 
 }
 /*
     int rows = 3;
@@ -143,13 +233,10 @@ double f11(double m)
 
 int main(int argc, char const *argv[])
 {
+    int max_iter = 10;
+    double a = 0; 
+    double b = 4.5;
+    bisection(f20, a, b, max_iter);
     
-    int max_iter = 7;
-    /*double a = 40; 
-    double b = 200;
-    bisection(f11, a, b, max_iter);*/
-    
-
-    jacobi(chute, rows, matrix, max_iter);
     return 0;
 }
