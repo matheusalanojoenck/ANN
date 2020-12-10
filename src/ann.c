@@ -120,3 +120,25 @@ void jacobi(double *chute, int rows, double matrix[rows][rows + 1], int n)
         }
     }
 }
+
+void seidel(double *chute, int rows, double matrix[rows][rows + 1], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int r = 0; r < rows; r++)
+        {
+            double temp = matrix[r][rows];
+            for (int c = 0; c < rows; c++)
+            {
+                if (r != c)
+                {
+                    temp -= chute[c] * matrix[r][c];
+                }
+            }
+            temp /= matrix[r][r];
+            printf("x%d, %d = %.16f\n", r + 1, i + 1, temp);
+            chute[r] = temp;
+        }
+        printf("\n");
+    }  
+}
