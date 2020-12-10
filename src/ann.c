@@ -142,3 +142,4 @@ void seidel(double *chute, int rows, double matrix[rows][rows + 1], int n)
         printf("\n");
     }  
 }
+
