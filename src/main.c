@@ -253,10 +253,44 @@ double f21(double x)
                            {0.66962, -2.84655, -2.41102, 1.8601, -9.61156, 1.69424}};
 */
 
+/*
+    int rows = 4;
+    double chute[4] = {-0.78049, 2.71578, 1.48246, -0.07112};
+    double matrix[4][5] = {{5.03688, 0.273, -2.16656, -1.39779, -0.76352}, 
+                           {2.55879, -7.07872, -0.97733, 2.34307, 0.52657}, 
+                           {-0.74143, -2.68448, -4.96284, 0.33741, -2.80993},
+                           {-0.13314, -2.83822, 2.465, 6.63589, -2.20213}};
 
+    int rows = 4;
+    double chute[4] = {1.72468, -2.31705, 2.46693, 0.25621};
+    double matrix[4][5] = {{-5.17612, -1.03448, 2.06267, 0.35472, 1.3848}, 
+                           {-1.5565, 7.28045, -1.38478, 2.61492, 0.76509}, 
+                           {-1.86749, 0.06341, -5.52904, -1.87389, 1.44258},
+                           {-0.08474, -2.79924, 1.46593, 6.07416, -0.56471}};
+
+*/
+
+double f_prova(double x)
+{
+    return pow(x, 3) - 5.0;
+}
+
+double df_prova(double x)
+{
+    return 3 * pow(x, 2);
+}
 int main(int argc, char const *argv[])
 {
-    int max_iter = 12;
-    
+    int max_iter = 4;
+    //double a = 2.07515;
+    //double b = 2.80285;
+
+    //bisection(f_prova, a, b, max_iter);
+    //newton(f_prova, df_prova, a, max_iter);
+    //secant(f_prova, a, b, max_iter);
+    //false_position(f_prova, a, b, max_iter);
+
+    //jacobi(chute, rows, matrix, max_iter);
+    //seidel(chute, rows, matrix, max_iter);
     return 0;
 }
