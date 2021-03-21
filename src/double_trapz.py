@@ -25,14 +25,26 @@ def double_trapz(f, a: float, b: float, c: float, d: float, n1: int, n2: int) ->
 
 
 def f(x, y):
-    return math.exp(-x ** 2 - y ** 2)
+    return math.exp(-(x + y) ** 2)
+
+def g(x, y):
+    return math.sqrt(x**2 + y**4)
+
+def t(x, y):
+    return math.cos(x + math.log(y**2 + 1)) ** 2
+
+def q(x, y):
+    return math.sqrt(1 + math.sin(x**2 + math.cos(y)))
+
+def m(x, y):
+    return math.sin(x**2 + y**2 + 1) + 2
 
 if __name__ == '__main__':
-    a, b = [1, 2]
-    c, d = [-1 ,0]
-    n1, n2 = 1000, 2000
+    a, b = [-0.91, 0.917]
+    c, d =  [-0.716, 0.851]
+    n1, n2 = 248, 123
 
-    r = double_trapz(f, a, b, c, d, n1, n2)
+    r = double_trapz(m, a, b, c, d, n1, n2)
     print(r)
-    print(0.1010133843750915)
-    print((abs(r - 0.1010133843750915)))
+    # print(0.1010133843750915)
+    # print((abs(r - 0.1010133843750915)))
