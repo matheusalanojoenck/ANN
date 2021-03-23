@@ -3,14 +3,17 @@ import random
 import math
 import matplotlib.pyplot as plt
 
+
 def modelo(x):
-    return 2 * x ** 2.43 + 1.3 * random.random()
+    return 2 * x ** 1.345 + 0.75 * random.random()
+
 
 x0, x1 = 0, 10
 n = 100
 x = x0 + (x1 - x0) * np.random.rand(n)
 x.sort()
 y = [modelo(xi) for xi in x]
+
 
 def best_pow(x, y):
 
@@ -26,15 +29,19 @@ def best_pow(x, y):
     a, b = math.exp(a0), a1
     return a, b
 
+
 a, b = best_pow(x, y)
+
 
 def bpow(x):
     return a * x ** b
 
+
 if __name__ == '__main__':
 
+
     print(a, b)
-    t = np.linspace(x0,x1, 100)
+    t = np.linspace(min(x),max(x), 100)
     bpowt = [bpow(i) for i in t]
     plt.plot(t, bpowt, color='orange', linewidth=3, zorder=10)
     plt.scatter(x, y, zorder=1)
