@@ -28,10 +28,12 @@ if __name__ == '__main__':
     # Fenomeno de Runge
     def f(x):
         return 4 + math.sin(x)-((x ** 2) / 30)
-    num = 10
-    #x2 = [-1 + (2/(num-1)) * i for i in range(num)]
-    x2 = [0.148 , 0.483, 0.678, 1.083, 1.403, 1.8, 1.974, 2.311, 2.64, 2.978, 3.223, 3.573, 3.762, 3.992, 4.372, 4.742, 4.945, 5.328, 5.499, 5.922, 6.173, 6.514, 6.826]
-    y2 = [f(i) for i in x2]
+    def f1(x):
+        return x**3 * math.exp(-x) * math.sqrt(math.cos(x**2) + 3)
+    # num = 10
+    # x2 = [-1 + (2/(num-1)) * i for i in range(num)]
+    x2 = [1.74386, 2.94509, 5.11921, 6.24493]
+    y2 = [f1(i) for i in x2]
     eq2 = lagrange(x2, y2)
 
     def subs(x):

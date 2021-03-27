@@ -40,11 +40,10 @@ def m(x, y):
     return math.sin(x**2 + y**2 + 1) + 2
 
 if __name__ == '__main__':
-    a, b = [-0.91, 0.917]
-    c, d =  [-0.716, 0.851]
-    n1, n2 = 248, 123
-
-    r = double_trapz(m, a, b, c, d, n1, n2)
+    a, b = [-1.16574,0.86414]
+    c, d = [-0.96643,1.05373]
+    n1, n2 = 4, 3
+    r = double_trapz(t, a, b, c, d, n1, n2)
     print(r)
     # print(0.1010133843750915)
     # print((abs(r - 0.1010133843750915)))

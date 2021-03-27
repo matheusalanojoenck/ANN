@@ -36,15 +36,18 @@ def f3(x):
 def f4(x):
     return math.sin(math.exp(-x ** 2)) + 1
 
+def f5(x):
+    return math.sqrt(1 + math.cos(x)**2)
+
 if __name__ == '__main__':
 
-    a, b = [0.854, 1.854]
+    a, b = [0.07997, 1.07997]
 
-    h = 1.0
-    k = 2
+    h = 0.1
+    k = 3
     hs = [h/2 ** i for i in range(k)]
 
-    col1 = [trapz(f0, a, b, hi) for hi in hs]
+    col1 = [trapz(f5, a, b, hi) for hi in hs]
     print('F_1', col1)
     r = romberg(col1)
     s = f'o numero {r} é uma aproximacao  para integral de exp(-x^2) em [{a}, {b}] com erro O(h^({2*k}))'

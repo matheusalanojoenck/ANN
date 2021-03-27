@@ -1,5 +1,6 @@
-import  random
+import random
 import numpy as np
+import math
 
 def prod(lst):
     p = 1
@@ -36,17 +37,20 @@ def finite_diffs(xs, ordem, x0, f):
 def f(x):
     return x ** x
 
+def f1(x):
+    return x**2 * math.exp(-x) * math.cos(x) + 1
+
 if __name__ == '__main__':
-    x0 = 1.4827
-    ordem = 3
+    x0 = 3.21464
+    ordem = 2
 
     # pontos para construir formula
-    num_pontos = 15
-    a = x0 - 0.23423442342
-    b = x0 + 0.12313453
-    xs = [a + (b - a) * random.random() for _ in range(num_pontos)]
-    xs.sort()
-
-    r = finite_diffs(xs, ordem, x0, f)
+    # num_pontos = 15
+    # a = x0 - 0.23423442342
+    # b = x0 + 0.12313453
+    # xs = [a + (b - a) * random.random() for _ in range(num_pontos)]
+    # xs.sort()
+    xs = [2.71203, 2.99596, 3.28365, 3.53637, 3.86176]
+    r = finite_diffs(xs, ordem, x0, f1)
     print(xs)
     print(f'aproximacao para a derivada de ordem {ordem} de f no ponto {x0}', r)
