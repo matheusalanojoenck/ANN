@@ -1,14 +1,29 @@
 import math
 import numpy as np
+from typing import List
+
+
+def px(coeffs_: List[float], x_):
+    soma = 0
+    for j in range(len(coeffs_)):
+        soma += coeffs_[j] * x_**j
+    return soma
 
 def f(x):
-    return x**3 * math.exp(-x) * math.sqrt(math.cos(x**2) + 2)
+    return 4 + math.sin(x) - ((x**2) / 30)
 
 if __name__ == '__main__':
-    p = 3 + 1
-    # pontos = [[1.365, 4.917], [2.291, 4.577], [3.749, 2.961], [5.234, 2.22], [6.972, 3.015]]
-    x = [1.30143, 2.91645, 5.27773, 6.63686]
+    p = 8 + 1
+    # x = [0.551, 0.631, 1.113, 2.032, 2.429, 3.308, 3.862, 3.952, 4.7]
+    # y = [4.513, 4.577, 4.856, 4.758, 4.457, 3.47, 2.843, 2.755, 2.264]
+    # values = [0.858, 1.077, 2.175, 2.344, 2.777, 3.871]
+
+    # pontos = [[0.641,4.584] , [0.882,4.746], [1.677,4.901], [2.989,3.854], [3.313,3.464], [4.137,2.591], [4.709,2.261], [5.927,2.48], [6.474,2.793]]
+
+    x = [0.327, 0.637, 1.512, 1.852, 2.252, 3.122, 3.686, 4.074, 4.48]
+    values = [0.461, 0.625, 1.351, 2.014, 2.634, 3.975]
     y = [f(i) for i in x]
+
     pontos = []
     for i in range(len(x)):
         row = [x[i], y[i]]
@@ -26,4 +41,7 @@ if __name__ == '__main__':
     # print(B)
 
     coeffs = np.linalg.solve(A, B)
-    print(coeffs)
+    print(list(coeffs))
+    for i in values:
+        print(abs(f(i) - px(coeffs, i)))
+        # print(px(coeffs, values[i]))
