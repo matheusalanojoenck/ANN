@@ -6,6 +6,12 @@ def f(x):
 def f1(x):
     return x**2 * math.exp(-x) * math.cos(x) + 1
 
+def f2(x):
+    return x**2 * math.cos(3*x)
+
+def f3(x):
+    return (x**2 + math.cos(2*x**3)) ** 2
+
 def quadrature (f, lista_de_pontos_e_pesos):
     soma = 0
     for x_k, c_k in lista_de_pontos_e_pesos:
@@ -16,7 +22,7 @@ def change(f, a, b, u):
    return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2
 
 def g(u):
-    return change(f1, a, b, u)
+    return change(f3, a, b, u)
 
 
 
@@ -32,10 +38,17 @@ if __name__ == '__main__':
           (0.525532409916329, 0.31370664587788727), (-0.7966664774136267, 0.22238103445337448), (0.7966664774136267, 0.22238103445337448),
           (-0.9602898564975363, 0.10122853629037626), (0.9602898564975363, 0.10122853629037626)]
 
-    print('{x:<20}{c:<20}'.format(x='x_k', c='c_k'))
-    for x_k, c_k in n3:
-        print('{x:<20}{c:<20}'.format(x=x_k, c=c_k))
-
-    a, b = [0.05848, 4.49597]
-    r = quadrature(g, n8)
-    print(r)
+    # print('{x:<20}{c:<20}'.format(x='x_k', c='c_k'))
+    # for x_k, c_k in n3:
+    #     print('{x:<20}{c:<20}'.format(x=x_k, c=c_k))
+    pontos = (-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,
+              0.7966664774136267, -0.9602898564975363, 0.9602898564975363)
+    pesos = (0.362683783378362, 0.362683783378362, 0.31370664587788727, 0.31370664587788727, 0.22238103445337448,
+             0.22238103445337448, 0.10122853629037626, 0.10122853629037626)
+    n = []
+    for i in range(len(pontos)):
+        n.append((pontos[i], pesos[i]))
+    print(n)
+    a, b = [-1.142, 0.977]
+    r = quadrature(g, n)
+    print(r**(1/2))

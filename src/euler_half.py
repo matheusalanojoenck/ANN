@@ -10,6 +10,9 @@ def g(x, y):
 def h(x, y):
     return y * math.cos(x) + 1
 
+def m(x, y):
+    return y + math.exp(-x**2) + 1
+
 def euler_half(f, x0: float, y0: float, h: float, n: int):
     r = []
     for i in range(n):
@@ -22,9 +25,9 @@ def euler_half(f, x0: float, y0: float, h: float, n: int):
     return r
 
 if __name__ == '__main__':
-    x0 = 0.727
-    y0 = 1.95195
-    r = euler_half(h, x0, y0, h=0.13307, n=10)
+    x0 = 0.52409
+    y0 = 1.09402
+    r = euler_half(m, x0, y0, h=0.15027, n=10)
 
     x, y = zip(*r)
 

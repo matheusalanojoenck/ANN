@@ -1,3 +1,5 @@
+import math
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -22,11 +24,13 @@ def g(x, y):
 def h(x, y):
     return y * np.cos(x) + 1
 
+def m(x, y):
+    return y + math.exp(-x**2) + 2
 
 if __name__ == '__main__':
-    x0 = 0.74506
-    y0 = 1.33292
-    r = euler(h, x0, y0, h=0.1236, n=10)
+    x0 = 0.35264
+    y0 = 1.78641
+    r = euler(m, x0, y0, h=0.10808, n=10)
 
     k = 1
     for x, y in zip(*r):

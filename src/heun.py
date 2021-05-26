@@ -20,12 +20,14 @@ def g(x, y):
 def h(x, y):
     return y * math.cos(x) + 1
 
+def m(x, y):
+    return y + math.exp(-x**2) + 3
 
 if __name__ == '__main__':
 
-    x0 = 1.58334
-    y0 = 1.75451
-    r = heun(g, x0, y0, h=0.13059, n=10)
+    x0 = 0.1724
+    y0 = 1.10093
+    r = heun(m, x0, y0, h=0.18617, n=10)
 
     x, y = zip(*r)
 

@@ -2,30 +2,25 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 def f(x):
-    if x <= 0:
-        return 2
-    return 1
+    return 2 * math.sin(x) + math.cos(-x**2) + 4
 
 def f1(x):
     return 1
 
 def f2(x):
-    return math.sin(x)
+    return x
 
 def f3(x):
-    return math.cos(x)
+    return math.sin(x)
 
 def f4(x):
-    return math.sin(3 * x)
+    return math.cos(x)
 
 def f5(x):
-    return math.cos(3 * x)
+    return x**2 + 1
 
 def f6(x):
-    return math.sin(5 * x)
-
-def f7(x):
-    return math.cos(5 * x)
+    return x**3 - x
 
 
 def trapz(f, a, b, n):
@@ -63,10 +58,13 @@ def g(x):
     return soma
 
 if __name__ == '__main__':
-    fs = [f1, f2, f3, f4, f5, f6, f7]
-    a, b = [-math.pi, math.pi]
+    fs = [f1, f2, f3, f4, f5, f6]
+    a, b = [-3.447, 3.402]
 
     coeffs = best_func(f, a, b, fs, intervalos=128)
+
+    for i in range(len(coeffs)):
+        print(f'a_{i+1} = {coeffs[i]}')
 
     t = np.linspace(a, b, 200)
     ft = [f(i) for i in t]

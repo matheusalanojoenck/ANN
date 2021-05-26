@@ -20,11 +20,14 @@ def g(x, y):
 def h(x, y):
     return y * math.cos(x) + 1
 
+def m(x, y):
+    return y + math.exp(-x**2) + 2
+
 if __name__ == '__main__':
 
-    x0 = 0.40967
-    y0 = 1.89727
-    r = ralston(h, x0, y0, h=0.14777, n=10)
+    x0 = 0.24987
+    y0 = 1.41254
+    r = ralston(m, x0, y0, h=0.1988, n=10)
 
     x, y = zip(*r)
 

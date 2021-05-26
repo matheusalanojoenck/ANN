@@ -22,11 +22,14 @@ def g(x, y):
 def h(x, y):
     return y * math.cos(x) + 1
 
+def m(x, y):
+    return y + math.exp(-x**2) + 1
+
 if __name__ == '__main__':
 
-    x0 = 0.57727
-    y0 = 1.82833
-    r = rk4(h, x0, y0, h=0.12316, n=10)
+    x0 = 0.33382
+    y0 = 1.73071
+    r = rk4(m, x0, y0, h=0.16734, n=10)
 
     x, y = zip(*r)
 
